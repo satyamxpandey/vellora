@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Vellora Global Sourcing</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --border: rgba(0, 0, 0, 0.08);
+      --maroon: #800020;
+      --text-black: #000000;
+      --text-muted: #444444;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-cream);
+      color: var(--text-black);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    /* Hero / Banner Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 480px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.72) 100%),
+                  url('https://i.pinimg.com/736x/ce/0d/21/ce0d21c8016f1e9efd4c1a22c7cfd9fe.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2.5rem;
+      color: #FFFFFF;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #F0EDE8;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 700px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 0.96rem;
+      font-weight: 400;
+      max-width: 480px;
+      margin-bottom: 1.8rem;
+      color: #F5F5F5;
+      line-height: 1.5;
+    }
+
+    /* Banner Inquiry Button */
+    .btn-hero {
+      align-self: flex-start;
+      background: #FFFFFF;
+      color: #000000 !important;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.6rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-hero:hover {
+      background: var(--maroon);
+      color: #FFFFFF !important;
+    }
+
+    /* Section Headers */
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--maroon);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    /* Collections Grid */
+    .collections {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .collection-card {
+      text-decoration: none;
+      color: var(--text-black);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      background-color: #EDE7DE;
+      margin-bottom: 1rem;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .collection-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .collection-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .collection-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .collection-link {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-black);
+      transition: color 0.2s ease;
+    }
+
+    .collection-card:hover .collection-link {
+      color: var(--maroon) !important;
+    }
+
+    /* Contact Statement */
+    .statement {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .statement-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .statement-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .contact-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-black);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .contact-line:hover {
+      color: var(--maroon) !important;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--text-black);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 0.5rem 2rem;
+      }
+      .hero {
+        padding: 2.5rem 1.4rem;
+        min-height: 440px;
+        margin-bottom: 2.5rem;
+      }
+      .collections {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+      }
+      .statement {
+        grid-template-columns: 1fr;
+        padding: 2.2rem 0;
+      }
+      footer {
+        flex-direction: column;
+        gap: 0.6rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Hero / Banner Section -->
+    <section class="hero">
+      <div class="hero-kicker">ESTABLISHED 2017 &bull; GLOBAL SOURCING</div>
+      <h1 class="hero-title">Sourcing beyond <em>Boundaries</em></h1>
+      <p class="hero-sub">Refined production pipelines across apparel, luxury living, and handcrafted lifestyle accessories.</p>
+      <!-- Banner Inquiry Link: Standardized _blank with fallback to prevent Google Sites iframe freeze -->
+      <a href="https://www.vellorags.com/inquiry" target="_blank" rel="noopener noreferrer" class="btn-hero" onclick="handleLink(event, 'https://www.vellorags.com/inquiry')">Inquire Now &rarr;</a>
+    </section>
+
+    <!-- Core Verticals -->
+    <span class="section-label">Capabilities</span>
+    <h2 class="section-title">Core Verticals</h2>
+
+    <div class="collections">
+      
+      <!-- 01 Garments & Apparel -->
+      <a href="https://www.vellorags.com/explore/garments-apparel" target="_blank" rel="noopener noreferrer" class="collection-card" onclick="handleLink(event, 'https://www.vellorags.com/explore/garments-apparel')">
+        <div class="image-box">
+          <img src="https://i.pinimg.com/736x/54/4a/45/544a45132ad77ce4fdc93d69025f2d85.jpg" alt="Garments & Apparel" />
+        </div>
+        <h3 class="collection-title">Garments &amp; Apparel</h3>
+        <p class="collection-desc">Tailored outerwear, circular knits, wovens, and performance apparel.</p>
+        <span class="collection-link">Explore Line &rarr;</span>
+      </a>
+
+      <!-- 02 Homes & Living -->
+      <a href="https://www.vellorags.com/explore/homes-living" target="_blank" rel="noopener noreferrer" class="collection-card" onclick="handleLink(event, 'https://www.vellorags.com/explore/homes-living')">
+        <div class="image-box">
+          <img src="https://i.pinimg.com/736x/86/61/fc/8661fcc69386094321291c4aaadfe8ff.jpg" alt="Homes & Living" />
+        </div>
+        <h3 class="collection-title">Homes &amp; Living</h3>
+        <p class="collection-desc">Curated interior textiles, bed linens, bath sets, and artisanal living decor.</p>
+        <span class="collection-link">Explore Line &rarr;</span>
+      </a>
+
+      <!-- 03 Fashion Accessories -->
+      <a href="https://www.vellorags.com/explore/fashion-accessories" target="_blank" rel="noopener noreferrer" class="collection-card" onclick="handleLink(event, 'https://www.vellorags.com/explore/fashion-accessories')">
+        <div class="image-box">
+          <img src="https://i.pinimg.com/736x/79/2b/e6/792be6a4a6c64f8619a96ac6d1f7fd27.jpg" alt="Fashion Accessories" />
+        </div>
+        <h3 class="collection-title">Fashion Accessories</h3>
+        <p class="collection-desc">Handcrafted leather goods, bespoke hardware, scarves, and accessories.</p>
+        <span class="collection-link">Explore Line &rarr;</span>
+      </a>
+
+    </div>
+
+    <!-- Contact Statement -->
+    <section class="statement">
+      <div class="statement-quote">
+        Precision sourcing for enterprise retail labels worldwide.
+      </div>
+      <div class="statement-details">
+        <a href="mailto:info@vellora.com" class="contact-line">
+          info@vellora.com
+        </a>
+        <a href="https://wa.me/918796775766?text=Hello%20Vellora%20Global%20Sourcing" target="_blank" rel="noopener noreferrer" class="contact-line">
+          WhatsApp: +91 87967 75766
+        </a>
+        <a href="tel:+9187967 75766" class="contact-line">
+          Call: +91 87967 75766
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span class="footer-brand">VELLORA GLOBAL SOURCING</span>
+      <span>&copy; 2026. All Rights Reserved.</span>
+    </footer>
+
+  </div>
+
+  <script>
+    function handleLink(e, url) {
+      // Pehle koshish karega parent/top window me bina block hue kholne ki
+      try {
+        if (window.top && window.top !== window.self) {
+          window.top.location.href = url;
+          if (e) e.preventDefault();
+          return;
+        }
+      } catch (err) {
+        // Agar Google Sites ka sandbox window.top ko block karta hai, toh default a tag ka target="_blank" chalne dega
+      }
+    }
+  </script>
+</body>
+</html>
