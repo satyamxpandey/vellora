@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Explore Collections | Vellora Global Sourcing</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --bg-cream-alt: #F2ECE4;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-maroon: rgba(128, 0, 32, 0.15);
+      --maroon: #800020;
+      --text-black: #000000;
+      --text-muted: #555555;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::selection {
+      background-color: var(--maroon);
+      color: #FFFFFF;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-cream);
+      color: var(--text-black);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    /* Page Intro */
+    .explore-header {
+      padding: 2.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3.5rem;
+    }
+
+    .header-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--maroon);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .header-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      max-width: 800px;
+    }
+
+    .header-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .header-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      line-height: 1.65;
+    }
+
+    /* Vertical Detailed Rows */
+    .vertical-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .vertical-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .vertical-row:hover {
+      border-color: var(--border-maroon);
+      box-shadow: 0 12px 30px rgba(128, 0, 32, 0.05);
+    }
+
+    .vertical-row.reverse {
+      grid-template-columns: 1fr 1fr;
+      direction: rtl;
+    }
+
+    .vertical-row.reverse .row-content {
+      direction: ltr;
+    }
+
+    .row-image-box {
+      width: 100%;
+      height: 440px;
+      overflow: hidden;
+      background-color: var(--bg-cream-alt);
+      border-radius: 2px;
+    }
+
+    .row-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .vertical-row:hover .row-image-box img {
+      transform: scale(1.03);
+    }
+
+    .row-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .row-index {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 0.6rem;
+    }
+
+    .row-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .row-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .spec-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .spec-list li {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .spec-bullet {
+      width: 6px;
+      height: 6px;
+      background-color: var(--maroon);
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* Fixed Active Button */
+    .btn-explore {
+      align-self: flex-start;
+      background: var(--text-black);
+      color: #FFFFFF !important;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      transition: background 0.2s ease, transform 0.15s ease;
+      user-select: none;
+      border: none;
+    }
+
+    .btn-explore:hover {
+      background: var(--maroon);
+      color: #FFFFFF !important;
+    }
+
+    .btn-explore:active {
+      transform: scale(0.97);
+    }
+
+    /* Minimal Contact Banner */
+    .statement {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .statement-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .statement-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .contact-line {
+      display: inline-flex;
+      align-items: center;
+      color: var(--text-black);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: color 0.2s;
+      cursor: pointer !important;
+    }
+
+    .contact-line:hover {
+      color: var(--maroon) !important;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--text-black);
+      font-weight: 700;
+    }
+
+    /* Mobile Edge-to-Edge Adjustments */
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 0.75rem 2.5rem;
+      }
+      .explore-header {
+        padding: 1.5rem 0 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .vertical-list {
+        gap: 2.5rem;
+      }
+      .vertical-row,
+      .vertical-row.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+        padding: 1.2rem;
+        gap: 1.5rem;
+      }
+      .row-image-box {
+        height: 320px;
+      }
+      .row-content {
+        padding: 0;
+      }
+      .statement {
+        grid-template-columns: 1fr;
+        padding: 2.2rem 0;
+        gap: 1.5rem;
+      }
+      footer {
+        flex-direction: column;
+        gap: 0.6rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Page Intro Header -->
+    <header class="explore-header">
+      <span class="header-kicker">PORTFOLIO &bull; PRODUCT CAPABILITIES</span>
+      <h1 class="header-title">Curated collections, <em>crafted to spec.</em></h1>
+      <p class="header-desc">
+        Explore our specialized manufacturing verticals designed for global retail chains, bespoke labels, and department stores.
+      </p>
+    </header>
+
+    <!-- 3 Sourcing Divisions Showcase -->
+    <div class="vertical-list">
+      
+      <!-- 01 Garments & Apparel -->
+      <section class="vertical-row">
+        <div class="row-image-box">
+          <img src="https://i.pinimg.com/736x/54/4a/45/544a45132ad77ce4fdc93d69025f2d85.jpg" alt="Garments & Apparel Sourcing" />
+        </div>
+        <div class="row-content">
+          <span class="row-index">Vertical 01</span>
+          <h2 class="row-title">Garments &amp; Apparel</h2>
+          <p class="row-text">
+            End-to-end apparel production tailored for high-volume fashion retailers and bespoke seasonal labels. From luxury tailoring to everyday circular knit essentials.
+          </p>
+          <ul class="spec-list">
+            <li><span class="spec-bullet"></span> Circular Knits, Tailored Wovens &amp; Denim</li>
+            <li><span class="spec-bullet"></span> GOTS Organic Cotton, Linen &amp; Blended Fibers</li>
+            <li><span class="spec-bullet"></span> Multi-Stage In-Line QA &amp; Fast-Track Fit Labs</li>
+          </ul>
+          <a href="https://www.vellorags.com/explore/garments-apparel" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-explore" 
+             onclick="navigateSafely(event, 'https://www.vellorags.com/explore/garments-apparel')">
+            Explore Apparel Line &rarr;
+          </a>
+        </div>
+      </section>
+
+      <!-- 02 Homes & Living -->
+      <section class="vertical-row reverse">
+        <div class="row-image-box">
+          <img src="https://i.pinimg.com/736x/86/61/fc/8661fcc69386094321291c4aaadfe8ff.jpg" alt="Homes & Living Sourcing" />
+        </div>
+        <div class="row-content">
+          <span class="row-index">Vertical 02</span>
+          <h2 class="row-title">Homes &amp; Living</h2>
+          <p class="row-text">
+            Sustainably sourced home textiles, premium bed and bath collections, handloom accents, and interior decor engineered for modern living spaces.
+          </p>
+          <ul class="spec-list">
+            <li><span class="spec-bullet"></span> Luxury Thread-Count Bed &amp; Bath Linens</li>
+            <li><span class="spec-bullet"></span> Handcrafted Decor, Tableware &amp; Soft Furnishings</li>
+            <li><span class="spec-bullet"></span> Eco-Friendly Dyes &amp; Retail Barcode Packaging</li>
+          </ul>
+          <a href="https://www.vellorags.com/explore/homes-living" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-explore" 
+             onclick="navigateSafely(event, 'https://www.vellorags.com/explore/homes-living')">
+            Explore Home Decor &rarr;
+          </a>
+        </div>
+      </section>
+
+      <!-- 03 Fashion Accessories -->
+      <section class="vertical-row">
+        <div class="row-image-box">
+          <img src="https://i.pinimg.com/736x/79/2b/e6/792be6a4a6c64f8619a96ac6d1f7fd27.jpg" alt="Fashion Accessories Sourcing" />
+        </div>
+        <div class="row-content">
+          <span class="row-index">Vertical 03</span>
+          <h2 class="row-title">Fashion Accessories</h2>
+          <p class="row-text">
+            Precision-crafted genuine leather goods, handbags, belts, seasonal scarves, and metallic lifestyle accessories adhering to strict global chemical standards.
+          </p>
+          <ul class="spec-list">
+            <li><span class="spec-bullet"></span> LWG Certified Sustainable Tannery Leathers</li>
+            <li><span class="spec-bullet"></span> Custom Hardware Engraving &amp; Luxury Packaging</li>
+            <li><span class="spec-bullet"></span> REACH &amp; Prop 65 Chemical Safety Compliance</li>
+          </ul>
+          <a href="https://www.vellorags.com/explore/fashion-accessories" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-explore" 
+             onclick="navigateSafely(event, 'https://www.vellorags.com/explore/fashion-accessories')">
+            Explore Accessories &rarr;
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Contact & Sourcing Dialogue -->
+    <section class="statement">
+      <div class="statement-quote">
+        Ready to scale your production with Vellora?
+      </div>
+      <div class="statement-details">
+        <a href="mailto:info@vellora.com" class="contact-line">
+          info@vellora.com
+        </a>
+        <a href="https://wa.me/9187967 75766?text=Hello%20Vellora%20Global%20Sourcing,%20we%20want%20to%20explore%20your%20sourcing%20lines." target="_blank" rel="noopener noreferrer" class="contact-line">
+          WhatsApp: +91 87967 75766
+        </a>
+        <a href="tel:+918796775766" class="contact-line">
+          Call: +91 87967 75766
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span class="footer-brand">VELLORA GLOBAL SOURCING</span>
+      <span>&copy; 2026. All Rights Reserved.</span>
+    </footer>
+
+  </div>
+
+  <script>
+    function navigateSafely(e, url) {
+      // 1. Try to navigate the parent window if Google Sites allows
+      try {
+        if (window.top && window.top !== window.self) {
+          window.top.location.href = url;
+          if (e) e.preventDefault();
+          return;
+        }
+      } catch (err) {
+        // Cross-origin restriction triggered by Google Sites sandbox:
+        // Let standard target="_blank" handle the navigation without breaking the click
+      }
+    }
+  </script>
+</body>
+</html>
