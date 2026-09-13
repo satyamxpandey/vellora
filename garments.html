@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Garments &amp; Apparel | Vellora Global Sourcing</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --border: rgba(0, 0, 0, 0.08);
+      --maroon: #800020;
+      --text-black: #000000;
+      --text-muted: #555555;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-cream);
+      color: var(--text-black);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1rem 3.5rem;
+    }
+
+    .page-header {
+      padding: 1.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .header-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--maroon);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .header-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .header-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 720px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .kids-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Ratio Restored (Kids Aspect is vertical) */
+    .kids-grid .photo-card {
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    /* IN-PLACE CLICK ZOOM (Retail Inventory Style, NO ICON/INDICATOR) */
+    .photo-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, z-index 0s;
+      z-index: 1;
+    }
+
+    .photo-card.zoomed {
+      transform: scale(1.6);
+      z-index: 99999;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      border-color: var(--maroon);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .section-header-block {
+      margin-top: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--maroon);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .section-separator {
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .closing-statement {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0 1rem;
+      text-align: center;
+    }
+
+    .closing-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      margin-bottom: 1.2rem;
+    }
+
+    .closing-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-line {
+      display: inline-flex;
+      align-items: center;
+      color: var(--text-black);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .contact-line:hover {
+      color: var(--maroon);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.55rem;
+      }
+      .kids-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.55rem;
+      }
+      .photo-card.zoomed {
+        transform: scale(1.4);
+      }
+      .closing-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="page-header">
+      <span class="header-kicker">DIVISION 01 &bull; APPAREL &amp; TEXTILES</span>
+      <h1 class="header-title">Garments &amp; <em>Apparel</em></h1>
+      <p class="header-desc">
+        End-to-end design, sustainable mill sourcing, precision pattern engineering, and bulk export manufacturing.
+      </p>
+    </header>
+
+    <!-- 12 Women's Apparel Images Restored -->
+    <div class="gallery-grid">
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/64/ff/17/64ff17c692bf45e188b4c7556a085fec.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/10/1e/a1/101ea1af74f2f5d2d5b107990ad18214.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/c5/56/e1/c556e1a1fc5408c474ea52007ecc0e0d.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/52/3a/b2/523ab203a90534f7728a953de9fa3c10.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/a9/2c/54/a92c54acdac7d49f0a51d0429d7599f9.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/39/40/61/394061568ca4e8deb23cfbb99daebde9.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/cd/70/7a/cd707ae0184d247ccd3291916704d568.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/ca/f1/b8/caf1b8711fbb6263fb307ae09cc4f6cd.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/00/ab/70/00ab70072f12f10cbf6dd8677ed36560.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/70/7f/eb/707feb7631a8364cdbf0d24e46eaa70d.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/ab/f8/fc/abf8fc4b0cb2a6fcdb74701679939364.jpg" alt="Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/3d/02/e5/3d02e5bdd1d4a96f08c926ebfa301874.jpg" alt="Apparel" /></div>
+    </div>
+
+    <hr class="section-separator" />
+
+    <div class="section-header-block">
+      <span class="section-label">Specialized Category</span>
+      <h2 class="section-title">Kids &amp; Infant <em>Apparel</em></h2>
+      <p class="section-desc">Certified organic, ultra-soft cottons and skin-safe essentials.</p>
+    </div>
+
+    <!-- Specialized Kids Section RESTORED -->
+    <div class="kids-grid">
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/c7/70/98/c770981797d58d7357f638f75e04c234.jpg" alt="Kids Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/b3/f4/68/b3f4689b7e0ef1ca4d5297642472def7.jpg" alt="Kids Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/56/fb/4c/56fb4cd16fefae3fa4eefbb91a5fa0c5.jpg" alt="Kids Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/6d/f0/c7/6df0c7d45e555b96ef93e263f2d6cd21.jpg" alt="Kids Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/71/76/35/7176350908f51a24844ab6f1c7400ee4.jpg" alt="Kids Apparel" /></div>
+      <div class="photo-card" onclick="toggleZoom(this)"><img src="https://i.pinimg.com/736x/e5/15/cd/e515cdaa66794502bda3b4cd58c6e367.jpg" alt="Kids Apparel" /></div>
+    </div>
+
+    <div class="closing-statement">
+      <div class="closing-text">Ready to engineer your next apparel collection with Vellora?</div>
+      <div class="closing-actions">
+        <!-- New Email Update -->
+        <a href="mailto:info@vellora.com" class="contact-line">info@vellora.com</a>
+        <a href="https://wa.me/918796775766" target="_blank" class="contact-line">WhatsApp: +91 87967 75766</a>
+        <a href="tel:+918796775766" class="contact-line">+91 87967 75766</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleZoom(card) {
+      const isZoomed = card.classList.contains('zoomed');
+      document.querySelectorAll('.photo-card').forEach(c => c.classList.remove('zoomed'));
+      if (!isZoomed) {
+        card.classList.add('zoomed');
+      }
+    }
+  </script>
+</body>
+</html>
